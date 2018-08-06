@@ -1,0 +1,1 @@
+ALTER SEQUENCE authority_id_seq RENAME TO authorities_id_seq;

@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+target
+*.iml
+out
+dev-app.properties
+unit-app.properties
+prod-app.properties
