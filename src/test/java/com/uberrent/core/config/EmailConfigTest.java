@@ -9,10 +9,11 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 @Configuration
-public class EmailConfigTest {
+public class EmailConfigTest  {
     @Profile({"unit"})
     @Bean(name = "mailSender")
-    public JavaMailSenderImpl getEmailSender() {
+    public JavaMailSenderImpl getEmailSender()
+    {
         JavaMailSenderImpl emailSender = Mockito.mock(JavaMailSenderImpl.class);
         return emailSender;
     }
