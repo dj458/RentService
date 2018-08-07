@@ -119,4 +119,3 @@ public class UserController {
        emailService.sendEmailConfirmation(user);
     }
 }
-1
