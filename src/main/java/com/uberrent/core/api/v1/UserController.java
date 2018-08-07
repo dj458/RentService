@@ -37,8 +37,6 @@ public class UserController {
     private JwtTokenUtil jwtTokenUtil;
 
 
-
-
     @RequestMapping(method = RequestMethod.GET)
     public List getUserList(){
         logger.info("test1234");
