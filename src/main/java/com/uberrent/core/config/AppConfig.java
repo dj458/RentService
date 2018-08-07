@@ -19,23 +19,23 @@ import java.util.Properties;
 
 
 @Configuration
-@ComponentScan(basePackages="com.uberrent.core")
+@ComponentScan(basePackages = "com.uberrent.core")
 public class AppConfig {
     @Autowired
     private Environment env;
-    private String bucketPropertyName="s3.bucket";
+    private String bucketPropertyName = "s3.bucket";
 
     @Bean(name = "appProperties")
-    public PropertiesFactoryBean getDatabaseConfig()throws Exception {
+    public PropertiesFactoryBean getDatabaseConfig() throws Exception {
         String profile = env.getActiveProfiles()[0];
-        PropertiesFactoryBean factory=new PropertiesFactoryBean();
-        factory.setLocation(new ClassPathResource("META-INF/env/"+profile+"-app.properties"));
+        PropertiesFactoryBean factory = new PropertiesFactoryBean();
+        factory.setLocation(new ClassPathResource("META-INF/env/" + profile + "-app.properties"));
         return factory;
     }
 
-    @Bean (name = "shareProperties")
-    public PropertiesFactoryBean getShareProperties()throws Exception {
-        PropertiesFactoryBean factory=new PropertiesFactoryBean();
+    @Bean(name = "shareProperties")
+    public PropertiesFactoryBean getShareProperties() throws Exception {
+        PropertiesFactoryBean factory = new PropertiesFactoryBean();
         factory.setLocation(new ClassPathResource("META-INF/share.properties"));
         return factory;
     }
@@ -45,9 +45,9 @@ public class AppConfig {
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).build();
         StorageService beanStroageService = new StorageService(s3Client);
         Properties properties = factoryBean.getObject();
-        String bucket=properties.getProperty(bucketPropertyName);
+        String bucket = properties.getProperty(bucketPropertyName);
         beanStroageService.setBucket(bucket);
-        return  beanStroageService;
+        return beanStroageService;
     }
 }
 
