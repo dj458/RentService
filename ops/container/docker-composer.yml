@@ -10,12 +10,12 @@ services:
 #     - "80:80"
 #     - "443:443"
   api:
-    image: rent-service
+    image: rentservice
     restart: always
     ports:
      - "8080:8080"
     links:
-     - db:car-test-db.ascendingdc.com
+     - db:feng-test-db.ascending.com
 
   db:
     image: postgres

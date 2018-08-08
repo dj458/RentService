@@ -37,7 +37,7 @@ public class DataBaseConfig {
     @Value("#{appProperties['database.driverName']}")
     private String driver;
 
-    @Profile({"test","stage","prod","unit"})
+    @Profile({"test","stage","prod"})
     @Bean(name = "flyway", initMethod = "migrate")
     public Flyway getupFlyway(@Autowired DataSource dataSource){
         Flyway flyway = new Flyway();
@@ -47,7 +47,7 @@ public class DataBaseConfig {
         return flyway;
     }
 
-    @Profile({"dev","unit","prod"})
+    @Profile({"dev","unit"})
     @Bean(name = "flyway", initMethod = "validate")
     public Flyway setupFlyway(@Autowired DataSource dataSource){
         Flyway flyway = new Flyway();
