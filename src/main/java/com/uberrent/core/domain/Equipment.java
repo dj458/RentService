@@ -11,7 +11,6 @@ public class Equipment {
     @GeneratedValue(strategy = SEQUENCE, generator = "equipments_id_seq")
     @SequenceGenerator(name = "equipments_id_seq", sequenceName = "equipments_id_seq")
     private Long id;
-
     @Column(name = "price_value")
     private String priceValue;
 
