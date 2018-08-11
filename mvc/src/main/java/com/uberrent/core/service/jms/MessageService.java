@@ -22,7 +22,7 @@ public class MessageService {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    @Value("${jms.queue.name}")
+    @Value("${amazon.sqs.name}")
     private String defaultDestination;
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
