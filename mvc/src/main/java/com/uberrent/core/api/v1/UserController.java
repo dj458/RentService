@@ -2,9 +2,11 @@ package com.uberrent.core.api.v1;
 
 import com.uberrent.core.domain.Image;
 import com.uberrent.core.domain.User;
+import com.uberrent.core.enumdef.WorkerMessageType;
 import com.uberrent.core.extend.security.JwtTokenUtil;
 import com.uberrent.core.service.EmailService;
 import com.uberrent.core.service.UserService;
+import com.uberrent.core.service.jms.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,8 @@ public class UserController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
+    @Autowired
+    private  MessageService messageService;
 
     @RequestMapping(method = RequestMethod.GET)
     public List getUserList(){
@@ -115,7 +118,8 @@ public class UserController {
 
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
     public void sendEmailConfirmation(@PathVariable("id") Long id){
-       User user= userService.findById(id);
-       emailService.sendEmailConfirmation(user);
+       //User user= userService.findById(id);
+       messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
+       //emailService.sendEmailConfirmation(user);
     }
 }
