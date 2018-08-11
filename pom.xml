@@ -12,5 +12,6 @@
 
     <modules>
         <module>mvc</module>
+        <module>worker1</module>
     </modules>
 </project>
