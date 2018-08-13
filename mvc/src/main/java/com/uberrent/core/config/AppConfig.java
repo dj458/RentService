@@ -40,6 +40,7 @@ public class AppConfig {
     }
 
 
+    @Bean
     public StorageService getStorageService(@Autowired @Qualifier("appProperties") PropertiesFactoryBean factoryBean) throws IOException {
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).build();
         StorageService beanStroageService = new StorageService(s3Client);
