@@ -16,7 +16,6 @@ public class StorageService {
     public StorageService (AmazonS3 s3){
         this.s3=s3;
     };
-
     public void putObjectRequest(String s3Key,  File image){
         s3.putObject(bucket,s3Key, image);
     }
