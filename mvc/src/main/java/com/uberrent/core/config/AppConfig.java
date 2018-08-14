@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.uberrent.core.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,7 +23,8 @@ import java.util.Properties;
 public class AppConfig {
     @Autowired
     private Environment env;
-    private String bucketPropertyName = "s3.bucket";
+    @Value("${aws.s3.bucket}")
+    private String bucket;
 
     @Bean(name = "appProperties")
     public PropertiesFactoryBean getDatabaseConfig() throws Exception {
@@ -41,11 +43,11 @@ public class AppConfig {
 
 
     @Bean
-    public StorageService getStorageService(@Autowired @Qualifier("appProperties") PropertiesFactoryBean factoryBean) throws IOException {
+    public StorageService getStorageService() throws IOException {
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).build();
         StorageService beanStroageService = new StorageService(s3Client);
-        Properties properties = factoryBean.getObject();
-        String bucket = properties.getProperty(bucketPropertyName);
+//        Properties properties = factoryBean.getObject();
+//        String bucket = properties.getProperty(bucketPropertyName);
         beanStroageService.setBucket(bucket);
         return beanStroageService;
     }

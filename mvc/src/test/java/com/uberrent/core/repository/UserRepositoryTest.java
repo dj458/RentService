@@ -2,10 +2,8 @@ package com.uberrent.core.repository;
 
 import com.uberrent.core.domain.User;
 import org.junit.Test;
-
 import javax.transaction.Transactional;
 import java.util.Optional;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
