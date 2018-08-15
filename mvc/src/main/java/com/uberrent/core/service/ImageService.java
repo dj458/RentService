@@ -16,6 +16,7 @@ public class ImageService {
         try {
             image.transferTo(dest);
             storageService.putObjectRequest(image.getOriginalFilename(), dest);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
