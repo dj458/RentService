@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
-
 @RestController
 @RequestMapping(value="/api/users",produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
