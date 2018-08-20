@@ -5,6 +5,8 @@ import com.uberrent.core.domain.User;
 import com.uberrent.core.enumdef.WorkerMessageType;
 import com.uberrent.core.extend.security.JwtTokenUtil;
 import com.uberrent.core.service.EmailService;
+import com.uberrent.core.service.ImageService;
+import com.uberrent.core.service.StorageService;
 import com.uberrent.core.service.UserService;
 import com.uberrent.core.service.jms.MessageService;
 import org.slf4j.Logger;
@@ -38,6 +40,10 @@ public class UserController {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private  MessageService messageService;
+    @Autowired
+    private StorageService storageService;
+    @Autowired
+    private ImageService imageService;
 
     @RequestMapping(method = RequestMethod.GET)
     public List getUserList(){
@@ -107,13 +113,6 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("authentication failure,check your username");
         }
 
-
-    @RequestMapping(value = "/image",method = RequestMethod.POST)
-    @ResponseBody
-    public Image uploadImage(@RequestParam("pic") MultipartFile image){
-        logger.info("show image name "+ image.getName());
-        return null;
-    }
 
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
     public void sendEmailConfirmation(@PathVariable("id") Long id){

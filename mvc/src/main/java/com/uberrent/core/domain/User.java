@@ -4,7 +4,6 @@ package com.uberrent.core.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
@@ -152,4 +151,3 @@ public class User implements UserDetails {
         this.lastName = lastName;
     }
 }
-

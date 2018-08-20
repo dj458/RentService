@@ -11,7 +11,7 @@ public class Utils {
     public static Collection<GrantedAuthority> getAuthorities(List<Authority> authorities) {
         List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
         for (Authority auth : authorities){
-            String ROLE = auth.getRole().toUpperCase();
+            String ROLE = "ROLE_"+auth.getRole().toUpperCase();
             authList.add(new SimpleGrantedAuthority(ROLE));
         }
         return authList;

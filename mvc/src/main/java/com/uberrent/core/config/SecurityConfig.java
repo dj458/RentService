@@ -1,5 +1,6 @@
 package com.uberrent.core.config;
 
+import com.uberrent.core.extend.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,10 +9,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthenticationEntryPoint restAuthenticationEntryPoint;
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
 
 //    public void configureGlobal(AuthenticationManagerBuilder auth)
 //            throws Exception {
@@ -47,13 +53,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/api/users/signup","/api/users/login","/api/users/image","/api/users/{id}/email").permitAll()
+        http.addFilterAt(new AnonymousAuthenticationFilter("rent_key"),AnonymousAuthenticationFilter.class)
+                .addFilterAt(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class)
+                .csrf().disable().authorizeRequests().antMatchers("/api/users/signup","/api/users/login").permitAll()
                 .and()
                    .authorizeRequests().antMatchers("/api/**").hasAnyRole("REGISTERED_USER","ADMIN")
                 .and()
                     .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
-                     .formLogin();
+                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 }
 
