@@ -1,6 +1,5 @@
 package com.uberrent.core.api.v1;
 
-import com.uberrent.core.domain.Image;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.enumdef.WorkerMessageType;
 import com.uberrent.core.extend.security.JwtTokenUtil;
@@ -23,7 +22,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
