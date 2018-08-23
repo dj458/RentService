@@ -43,26 +43,6 @@ public class UserController {
     @Autowired
     private ImageService imageService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List getUserList(){
-        logger.info("test1234");
-        return null;
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    @ResponseBody
-    public User postUser(@RequestBody User user){
-        User userSaved = userService.save(user);
-        return userSaved;
-    }
-
-
-    @RequestMapping(value = "/{Id}", method = RequestMethod.GET)
-    @ResponseBody
-    public User getUserById(@PathVariable("Id") Long Id){
-        User user = userService.findById(Id);
-        return user;
-    }
 
     @RequestMapping(value = "/signup",method = RequestMethod.POST)
     public User signupUser(@RequestBody User user) {
@@ -71,21 +51,6 @@ public class UserController {
              return user;
     }
 
-    @RequestMapping(value = "/search",params = "username", method = RequestMethod.GET)
-    @ResponseBody
-    public User getUserByParam(@RequestParam("username") String username){
-        logger.info("request parameters " + username);
-        User user = userService.findByUsername(username);
-        return user;
-    }
-
-    @RequestMapping(value = "/search",params = "email", method = RequestMethod.GET)
-    @ResponseBody
-    public User getUserByParam_Second(@RequestParam("email") String username){
-        logger.info("request parameters " + username);
-        User user = userService.findByUsername(username);
-        return user;
-    }
 
     @RequestMapping(value = "/login",params = "username",method = RequestMethod.POST)
     @ResponseBody
@@ -110,6 +75,15 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("authentication failure,check your username");
         }
+
+
+    @RequestMapping(value = "/search",params = "username", method = RequestMethod.GET)
+    @ResponseBody
+    public User getUserByParam(@RequestParam("username") String username){
+        logger.info("request parameters " + username);
+        User user = userService.findByUsername(username);
+        return user;
+    }
 
 
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
