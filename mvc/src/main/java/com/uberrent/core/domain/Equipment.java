@@ -22,9 +22,7 @@ public class Equipment {
         return priceValue;
     }
 
-    public void setPriceValue(String priceValue) {
-        this.priceValue = priceValue;
-    }
+    public void setPriceValue(String priceValue) { this.priceValue = priceValue; }
 
     public Long getId() {
         return id;
