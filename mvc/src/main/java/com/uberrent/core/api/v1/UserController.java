@@ -23,6 +23,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value="/api/users",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,20 +53,16 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/login",params = "username",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<?> loginUser(@RequestParam ("username")
-                           String username,
-                                    @RequestParam("password")
-                            String password,
-                                       Device device){
-        logger.info("login parameters " +username);
+    public ResponseEntity<?> loginUser ( @RequestBody LoginInfo loginInfo, Device device){
+        logger.info("login parameters " +loginInfo.username);
         try {
-            Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(username, password);
+            Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(loginInfo.username, loginInfo.password);
             Authentication fullyAuthentication = authenticationManager.authenticate(notFullyAuthentication);
             SecurityContextHolder.getContext().setAuthentication(fullyAuthentication);
 
-            UserDetails userDetails =  userService.findByUsername(username);
+            UserDetails userDetails =  userService.findByUsername(loginInfo.username);
             String token=  jwtTokenUtil.generateToken(userDetails, device);
             return ResponseEntity.status(HttpStatus.OK).body(token);
         }
@@ -93,3 +90,4 @@ public class UserController {
        //emailService.sendEmailConfirmation(user);
     }
 }
+
