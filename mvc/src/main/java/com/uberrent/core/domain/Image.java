@@ -23,7 +23,7 @@ public class Image {
     public Long getId(){ return id;}
 
     public void setUrl (String url){this.url=url;}
-    public String getUrl (String url){return url;}
+    public String getUrl (){return url;}
 
     public User getUser() { return user; }
 

@@ -8,6 +8,7 @@ public class StorageService {
     private AmazonS3 s3;
     private String bucket;
 
+
     @Value("${aws.region}")
     private String region;
 
@@ -26,5 +27,3 @@ public class StorageService {
         return objectUrl;
     }
 }
-
-
