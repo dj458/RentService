@@ -1,5 +1,6 @@
 package com.uberrent.core.api.v1;
 
+import com.uberrent.core.domain.LoginInfo;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.enumdef.WorkerMessageType;
 import com.uberrent.core.extend.security.JwtTokenUtil;
@@ -22,8 +23,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value="/api/users",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,7 +54,7 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<?> loginUser ( @RequestBody LoginInfo loginInfo, Device device){
+    public ResponseEntity<?> loginUser (@RequestBody LoginInfo loginInfo, Device device){
         logger.info("login parameters " +loginInfo.username);
         try {
             Authentication notFullyAuthentication = new UsernamePasswordAuthenticationToken(loginInfo.username, loginInfo.password);

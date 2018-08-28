@@ -1,4 +1,4 @@
-package com.uberrent.core.api.v1;
+package com.uberrent.core.domain;
 
 public class LoginInfo{
 
