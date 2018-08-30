@@ -413,6 +413,31 @@
 
 
         <profile>
+            <id>test</id>
+            <build>
+                <finalName>uberrent-spring-mvc</finalName>
+                <plugins>
+                    <!--flyway database migration -->
+                    <plugin>
+                        <groupId>org.flywaydb</groupId>
+                        <artifactId>flyway-maven-plugin</artifactId>
+                        <version>${flyway.version}</version>
+                        <configuration>
+                            <driver>org.postgresql.Driver</driver>
+                            <url>jdbc:postgresql://${db_url}</url>
+                            <user>${db_username}</user>
+                            <password>${db_password}</password>
+                            <locations>
+                                <location>db/migration</location>
+                            </locations>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <profile>
             <id>prod</id>
             <build>
                 <finalName>uberrent-spring-mvc</finalName>
@@ -424,9 +449,9 @@
                         <version>${flyway.version}</version>
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
-                            <url>jdbc:postgresql://localhost:5431/rent_prod</url>
-                            <user>feng</user>
-                            <password>123</password>
+                            <url>jdbc:postgresql://${db_url}</url>
+                            <user>${db_username}</user>
+                            <password>${db_password}</password>
                             <locations>
                                 <location>db/migration</location>
                             </locations>
@@ -435,6 +460,9 @@
                 </plugins>
             </build>
         </profile>
+
+
+
     </profiles>
 
 
