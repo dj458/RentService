@@ -17,5 +17,6 @@ public class SQSListenerService{
     @JmsListener(destination = "rentservice_dev")
     public void createThumbnail(String requestJSON) throws JMSException {
         log.info("Received ");
+
     }
 }

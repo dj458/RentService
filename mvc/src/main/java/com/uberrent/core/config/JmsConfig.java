@@ -28,6 +28,7 @@ public class JmsConfig {
 //        SQSConnectionFactory.Builder builder = new SQSConnectionFactory.Builder(region);
 //        builder.setAwsCredentialsProvider(new DefaultAWSCredentialsProviderChain());
 //        return builder.build();
+
         return factory;
     }
 
