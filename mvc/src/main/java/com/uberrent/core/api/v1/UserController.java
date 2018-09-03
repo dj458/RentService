@@ -84,9 +84,9 @@ public class UserController {
 
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
     public void sendEmailConfirmation(@PathVariable("id") Long id){
-       //User user= userService.findById(id);
+       User user= userService.findById(id);
        messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
-       //emailService.sendEmailConfirmation(user);
+       emailService.sendEmailConfirmation(user);
     }
 }
 
