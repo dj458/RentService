@@ -124,7 +124,7 @@ public class User implements UserDetails {
     }
 
     public void setCredentialsExpired(Boolean credentialsExpired) {
-        this.credentialsExpired = !credentialsExpired;
+        this.credentialsExpired = credentialsExpired;
     }
 
     public Boolean getEnabled() {
