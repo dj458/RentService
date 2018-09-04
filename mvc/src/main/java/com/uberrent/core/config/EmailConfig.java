@@ -18,8 +18,8 @@ public class EmailConfig {
         emailSender.setHost("smtp.sendgrid.net");
         emailSender.setPort(465);
         emailSender.setProtocol("smtps");
-        emailSender.setUsername("ryohang");
-        emailSender.setPassword("missionpossible");
+        emailSender.setUsername("fzheng8");
+        emailSender.setPassword("sendgrid881238");
         Properties mailProperties = new Properties();
         mailProperties.setProperty("mail.smtps.auth","true");
         mailProperties.setProperty("mail.smtp.ssl.enable","true");

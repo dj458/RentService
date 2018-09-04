@@ -53,7 +53,7 @@ public class UserService {
 
     public Authority addAuthorityTo(User user){
         Authority authority = new Authority();
-        authority.setRole("ROLE_REGISTERED_USER");
+        authority.setRole("REGISTERED_USER");
         authority.setUser(user);
         return authorityRepository.save(authority);
     }
