@@ -1,7 +1,7 @@
 package com.uberrent.core.service;
 
-import com.uberrent.core.config.AppConfig;
-import com.uberrent.core.config.StorageMockConfigTest;
+import com.uberrent.web.config.AppConfig;
+import com.uberrent.core.service.StorageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

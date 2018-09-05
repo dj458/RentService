@@ -1,7 +1,8 @@
 package com.uberrent.core.service;
 
-import com.uberrent.core.config.AppConfig;
+import com.uberrent.web.config.AppConfig;
 import com.uberrent.core.config.StorageMockConfigTest;
+import com.uberrent.core.service.ImageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

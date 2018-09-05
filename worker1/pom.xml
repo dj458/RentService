@@ -40,6 +40,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.uberrent.core</groupId>
+            <artifactId>rent-service-mvc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,6 +75,7 @@
             <version>1.0.4</version>
             <type>jar</type>
         </dependency>
+
 
     </dependencies>
 

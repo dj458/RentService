@@ -2,13 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.uberrent.core</groupId>
-    <artifactId>rent-service-mvc</artifactId>
-    <packaging>war</packaging>
+
+    <groupId>com.uberrent</groupId>
+    <artifactId>core</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>rent-spring-mvc</name>
 
     <properties>
         <spring.version>5.0.6.RELEASE</spring.version>
@@ -331,11 +329,6 @@
             <artifactId>aws-java-sdk</artifactId>
             <version>1.11.366</version>
         </dependency>
-        <dependency>
-            <groupId>com.uberrent</groupId>
-            <artifactId>core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
 
@@ -465,9 +458,6 @@
                 </plugins>
             </build>
         </profile>
-
-
-
     </profiles>
 
 
@@ -481,4 +471,7 @@
             </snapshots>
         </repository>
     </repositories>
+
 </project>
+
+    

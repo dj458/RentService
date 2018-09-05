@@ -2,7 +2,8 @@ package com.uberrent.core.repository;
 
 import com.uberrent.core.domain.Authority;
 import com.uberrent.core.domain.User;
-import com.uberrent.core.extend.security.Utils;
+
+import com.uberrent.web.extend.security.Utils;
 import org.junit.Test;
 import org.springframework.security.core.GrantedAuthority;
 

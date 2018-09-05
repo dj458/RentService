@@ -1,7 +1,7 @@
 package com.uberrent.core.service;
 
 
-import com.uberrent.core.config.AppConfig;
+import com.uberrent.web.config.AppConfig;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.mail.RegistrationEmail;
 import org.junit.Test;

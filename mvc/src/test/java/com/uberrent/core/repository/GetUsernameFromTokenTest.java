@@ -1,7 +1,7 @@
 package com.uberrent.core.repository;
 
 import com.uberrent.core.domain.User;
-import com.uberrent.core.extend.security.JwtTokenUtil;
+import com.uberrent.web.extend.security.JwtTokenUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mobile.device.LiteDevice;
