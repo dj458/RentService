@@ -48,9 +48,9 @@ public class UserController {
     public User signupUser(@RequestBody User user) {
              userService.registerUser(user);
              logger.info("save user "+ user.getUsername());
+             messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(user.getId()),5000);
              return user;
     }
-
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
@@ -81,12 +81,11 @@ public class UserController {
         return user;
     }
 
-
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
     public void sendEmailConfirmation(@PathVariable("id") Long id){
-       User user= userService.findById(id);
-       messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
-       emailService.sendEmailConfirmation(user);
+//       User user= userService.findById(id);
+      // messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
+       //emailService.sendEmailConfirmation(user);
     }
 }
 
