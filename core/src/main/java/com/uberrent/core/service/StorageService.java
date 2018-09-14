@@ -1,6 +1,7 @@
 package com.uberrent.core.service;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.S3Object;
 import org.springframework.beans.factory.annotation.Value;
 import java.io.File;
 
@@ -27,5 +28,13 @@ public class StorageService {
     public String getObjectUrl(String s3key){
         String objectUrl="https://s3."+region+".amazonaws.com/"+bucket+"/"+s3key;
         return objectUrl;
+    }
+
+    public S3Object getObject(String S3key) {
+        if(S3key==null){
+            return null;
+        }else{
+            return s3.getObject(bucket, S3key);
+        }
     }
 }
