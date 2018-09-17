@@ -1,0 +1,1 @@
+ALTER TABLE payment ADD COLUMN cardNumber varchar(255) NOT NULL ;

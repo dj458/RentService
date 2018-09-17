@@ -22,6 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,8 +31,6 @@ public class UserController {
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private UserService userService;
-    @Autowired
-    private  EmailService emailService;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -51,6 +50,7 @@ public class UserController {
              messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(user.getId()),5000);
              return user;
     }
+
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
@@ -83,9 +83,10 @@ public class UserController {
 
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
     public void sendEmailConfirmation(@PathVariable("id") Long id){
+
 //       User user= userService.findById(id);
-      // messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
-       //emailService.sendEmailConfirmation(user);
+//       messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
+//       emailService.sendEmailConfirmation(user);
     }
 }
 

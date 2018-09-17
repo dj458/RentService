@@ -20,11 +20,17 @@ public class Payment {
     @Column (name = "payment_type")
     private String payment_type;
 
+    @Column (name = "cardNumber")
+    private String cardNumber;
+
     @Column(name ="payment_value")
     private String payment_value;
 
     public void setPaymentType(){this.payment_type=payment_type;}
     public String getPaymentType(){return payment_type;}
+
+    public void setCardNumber(){this.cardNumber=cardNumber;}
+    public String getCardNumber(){return cardNumber;}
 
     public void setPaymentValue(){this.payment_value=payment_value;}
     public String getPaymentValue(){return payment_value;}

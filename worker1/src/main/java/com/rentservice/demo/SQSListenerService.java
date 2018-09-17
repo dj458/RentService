@@ -9,6 +9,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import javax.jms.JMSException;
+import java.util.Map;
 
 @Service
 public class SQSListenerService{
@@ -19,9 +20,10 @@ public class SQSListenerService{
     private EmailService emailService;
 
     @JmsListener(destination = "rentservice_dev")
-    public void createThumbnail(String username) throws JMSException {
-
-        User user= userService.findByUsername(username);
+    public void createThumbnail(Map<String,Object> msg) throws JMSException {
+        String id  =(String)msg.get("msgText");
+        Long id2=Long.parseLong(id);
+        User user= userService.findById(id2);
         emailService.sendEmailConfirmation(user);
         log.info("Received");
     }

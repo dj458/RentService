@@ -1,4 +1,4 @@
-package com.rentservice.demo.Config;
+package com.rentservice.demo.config;
 
 import com.amazon.sqs.javamessaging.ProviderConfiguration;
 import com.amazon.sqs.javamessaging.SQSConnectionFactory;

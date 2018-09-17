@@ -1,6 +1,5 @@
-package com.rentservice.demo.Config;
+package com.rentservice.demo.config;
 
-import com.uberrent.core.config.DataBaseConfig;
 import com.uberrent.core.config.ServiceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
@@ -10,7 +9,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 @Import(ServiceConfig.class)
-@ComponentScan(basePackages = "com.uberrent.core",excludeFilters = @ComponentScan.Filter(type=FilterType.REGEX,pattern={"JmsConfig"}))
+@ComponentScan(basePackages = "com.rentservice.demo")
 public class AppCofig {
     @Autowired
     private Environment env;
@@ -29,7 +28,4 @@ public class AppCofig {
         factory.setLocation(new ClassPathResource("META-INF/share.properties"));
         return factory;
     }
-
-
-
 }
