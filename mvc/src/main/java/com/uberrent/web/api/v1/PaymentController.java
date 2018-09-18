@@ -1,24 +1,25 @@
 package com.uberrent.web.api.v1;
 
 import com.uberrent.core.domain.Payment;
+import com.uberrent.core.domain.User;
+import com.uberrent.core.service.PaymentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "api/payment",produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api/payments",produces = MediaType.APPLICATION_JSON_VALUE)
 public class PaymentController {
     private Logger logger=LoggerFactory.getLogger(getClass());
+    @Autowired
+    private PaymentService paymentService;
 
-
-    @RequestMapping(value = "payment-method",method = RequestMethod.POST)
-    public Payment addPaymentMethod(@RequestBody Payment payment){
-
-        logger.info("This is payment test");
-        return payment;
+    @RequestMapping(value = "/paymentmethod",method = RequestMethod.POST)
+    public Payment addPaymentMethod(){
+        //paymentService.addPaymentMethod(payment);
+        logger.info("save payment");
+        return null;
     }
 }

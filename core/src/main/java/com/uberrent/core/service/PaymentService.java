@@ -14,4 +14,16 @@ public class PaymentService {
         Payment payment=paymentRepository.findByCardNumber(cardnumber).get();
         return payment;
     }
+
+    public Payment addPaymentMethod(Payment payment){
+        save(payment);
+        return payment;
+    }
+
+    public Payment save(Payment p){
+        p.setPaymentType();
+        Payment payment= paymentRepository.save(p);
+        return payment;
+
+    }
 }
