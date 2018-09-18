@@ -17,9 +17,9 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @RequestMapping(value = "/paymentmethod",method = RequestMethod.POST)
-    public Payment addPaymentMethod(){
-        //paymentService.addPaymentMethod(payment);
+    public Payment addPaymentMethod(@RequestBody Payment payment){
+        paymentService.addPaymentMethod(payment);
         logger.info("save payment");
-        return null;
+        return payment;
     }
 }
