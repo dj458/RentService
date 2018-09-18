@@ -16,7 +16,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @RequestMapping(value = "/paymentmethod",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST)
     public Payment addPaymentMethod(@RequestBody Payment payment){
         paymentService.addPaymentMethod(payment);
         logger.info("save payment");

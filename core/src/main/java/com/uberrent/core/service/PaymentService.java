@@ -16,14 +16,17 @@ public class PaymentService {
     }
 
     public Payment addPaymentMethod(Payment payment){
-        save(payment);
+        //save(payment);
+        Payment payment1= paymentRepository.save(payment);
         return payment;
     }
 
-    public Payment save(Payment p){
-        p.setPaymentType();
-        Payment payment= paymentRepository.save(p);
-        return payment;
-
-    }
+//    public Payment save(Payment p){
+//        p.setPaymentType();
+//        p.setPaymentValue();
+//        p.setCardNumber();
+//        Payment payment= paymentRepository.save(p);
+//        return payment;
+//
+//    }
 }
