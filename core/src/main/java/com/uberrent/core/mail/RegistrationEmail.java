@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.io.Serializable;
 import java.util.Map;
 
-@Service
+//@Service
 public class RegistrationEmail extends AbstractFreemarkerEmail {
     @Override
     protected String getMailSubject() {

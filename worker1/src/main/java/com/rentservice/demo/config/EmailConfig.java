@@ -1,6 +1,7 @@
 package com.rentservice.demo.config;
 
 import com.uberrent.core.mail.RegistrationEmail;
+import com.uberrent.core.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -20,8 +21,8 @@ public class EmailConfig {
         emailSender.setHost("smtp.sendgrid.net");
         emailSender.setPort(465);
         emailSender.setProtocol("smtps");
-        emailSender.setUsername("fzheng4588");
-        emailSender.setPassword("881238aBc");
+        emailSender.setUsername("djb4588");
+        emailSender.setPassword("2018aN###");
         Properties mailProperties = new Properties();
         mailProperties.setProperty("mail.smtps.auth","true");
         mailProperties.setProperty("mail.smtp.ssl.enable","true");
@@ -45,5 +46,12 @@ public class EmailConfig {
      registrationEmail.setConfiguration(configuration);
      registrationEmail.setFreemarkerTemplate("RegistrationEmail.ftl");
      return  registrationEmail;
+    }
+
+    @Bean
+    public EmailService getEmailService(){
+        EmailService emailService=new EmailService();
+        //emailService.sendEmailConfirmation(user);
+        return emailService;
     }
 }
