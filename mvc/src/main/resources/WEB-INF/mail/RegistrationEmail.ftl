@@ -14,7 +14,7 @@
                     <td style="padding:0;padding-left:20px;padding-right:20px;background:#ffffff;">
                         <h1>Welcome to RentService88888!!!!!, ${user.username}!</h1>
                         <p align="left">
-                            You have successfully signed up for ascending demo!
+                            You have successfully signed up for DJ458 demo! Let's roll!
                         </p>
                     </td>
                 </tr>
