@@ -15,9 +15,9 @@ public class ImageService {
     private StorageService storageService;
 
     public String upload(MultipartFile image) {
-        File dest = new File("/tmp/image.png");
         UUID uuid = UUID.randomUUID();
         String randomUUIDString = uuid.toString();
+        File dest = new File(randomUUIDString);
         String objUrl=null;
         try {
             image.transferTo(dest);
