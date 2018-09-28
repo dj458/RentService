@@ -28,6 +28,7 @@ public class Payment implements Serializable {
     @Column(name ="payment_value")
     private String paymentValue;
 
+
     public String getPaymentType(){return paymentType;}
     public void setPaymentType(String payment_type){this.paymentType=payment_type;}
 
@@ -39,7 +40,7 @@ public class Payment implements Serializable {
     public String getPaymentValue(){return paymentValue;}
     public void setPaymentValue(String payment_value){this.paymentValue=payment_value;}
 
-
+    //public void setPaymentMethod(Payment payment){this.payment=payment;}
     public User getUser() { return user; }
 
     public void setUser(User user) { this.user = user;}
