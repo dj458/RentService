@@ -13,5 +13,6 @@ public interface PaymentRepository extends CrudRepository<Payment, Long> {
 
     @Query("select a from Payment a where a.cardNumber=?1")
     Optional<Payment> findByCardNumber(String cardNumber);
-
+    @Query("select a from Payment a where a.id=?1")
+    Optional<Payment> findByUserid(String userid);
 }

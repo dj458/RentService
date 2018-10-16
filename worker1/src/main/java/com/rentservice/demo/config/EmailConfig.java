@@ -21,7 +21,7 @@ public class EmailConfig {
         emailSender.setHost("smtp.sendgrid.net");
         emailSender.setPort(465);
         emailSender.setProtocol("smtps");
-        emailSender.setUsername("djb45888");
+        emailSender.setUsername("djb458888");
         emailSender.setPassword("2018aN###");
         Properties mailProperties = new Properties();
         mailProperties.setProperty("mail.smtps.auth","true");

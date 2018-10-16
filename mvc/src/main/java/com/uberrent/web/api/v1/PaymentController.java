@@ -32,7 +32,12 @@ public class PaymentController {
         logger.info("save payment");
         return payment;
     }
+
+    //get payment by userid, user inside the payment.
+    @RequestMapping(value = "/id",params = "userid", method = RequestMethod.GET)
+    @ResponseBody
+    public Payment getPaymentByUserId(@RequestParam("userid") String userid){
+        Payment payment=paymentService.findPaymentByUserid(userid);
+        return payment;
+    }
 }
-
-
-//get payment by userid, user inside the payment.
