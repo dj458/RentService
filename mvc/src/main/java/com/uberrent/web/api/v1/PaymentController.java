@@ -12,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "api/payments",produces = MediaType.APPLICATION_JSON_VALUE)
 public class PaymentController {
@@ -33,11 +35,11 @@ public class PaymentController {
         return payment;
     }
 
-    //get payment by userid, user inside the payment.
-    @RequestMapping(value = "/id",params = "userid", method = RequestMethod.GET)
+    //get payments by user id, user inside the payment.
+    @RequestMapping(value = "/user/{user_id}", method = RequestMethod.GET)
     @ResponseBody
-    public Payment getPaymentByUserId(@RequestParam("userid") String userid){
-        Payment payment=paymentService.findPaymentByUserid(userid);
+    public List<Payment> getPaymentByUserId(@PathVariable("user_id") Long id){
+        List<Payment> payment=paymentService.findPaymentByUserId(id);
         return payment;
     }
 }

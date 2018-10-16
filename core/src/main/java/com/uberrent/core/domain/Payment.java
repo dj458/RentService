@@ -1,5 +1,7 @@
 package com.uberrent.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -17,6 +19,10 @@ public class Payment implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+
+    //use JsonIgnore to ignore all the user info, because its LAZY FetchType so user info can't load and
+    //we need to ignore it, so that findPaymentByUserId can work properly
+//    @JsonIgnore
     private User user;
 
     @Column (name = "payment_type")
@@ -28,18 +34,8 @@ public class Payment implements Serializable {
     @Column(name ="payment_value")
     private String paymentValue;
 
-//    @Column(name ="username")
-//    private String username;
-//
-//    @Column(name ="email")
-//    private String email;
-
-
     public String getPaymentType(){return paymentType;}
     public void setPaymentType(String payment_type){this.paymentType=payment_type;}
-
-//   public String getUsername1(){return username;}
-//   public void setUsername1(String username){this.username=username;}
 
     public String getCardNumber(){return cardNumber;}
     public void setCardNumber(String cardNumber){this.cardNumber=cardNumber;}

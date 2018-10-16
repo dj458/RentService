@@ -59,6 +59,7 @@ public class User implements UserDetails {
         return id;
     }
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
@@ -152,4 +153,6 @@ public class User implements UserDetails {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+
 }

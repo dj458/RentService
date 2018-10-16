@@ -5,6 +5,7 @@ import com.uberrent.core.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class PaymentService {
@@ -24,8 +25,8 @@ public class PaymentService {
         return payment1;
     }
 
-    public Payment findPaymentByUserid(String userid){
-        Payment payment = paymentRepository.findByUserid(userid).get();
+    public List<Payment> findPaymentByUserId(Long userid){
+        List<Payment> payment = paymentRepository.findByUserId(userid);
         return payment;
     }
 
