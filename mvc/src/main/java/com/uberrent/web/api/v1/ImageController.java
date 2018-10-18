@@ -4,6 +4,7 @@ package com.uberrent.web.api.v1;
 import com.uberrent.core.domain.Image;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.service.ImageService;
+import com.uberrent.core.service.StorageService;
 import com.uberrent.core.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

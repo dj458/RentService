@@ -3,12 +3,11 @@ package com.uberrent.web.api.v1;
 import com.uberrent.core.domain.LoginInfo;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.enumdef.WorkerMessageType;
-import com.uberrent.web.extend.security.JwtTokenUtil;
-import com.uberrent.core.service.EmailService;
 import com.uberrent.core.service.ImageService;
 import com.uberrent.core.service.StorageService;
 import com.uberrent.core.service.UserService;
 import com.uberrent.core.service.jms.MessageService;
+import com.uberrent.web.extend.security.JwtTokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -19,8 +19,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.net.URL;
+
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.validateMockitoUsage;
@@ -31,15 +32,15 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("unit")
 public class StorageServiceTest {
-    @InjectMocks
+//    @InjectMocks
     @Autowired
     private StorageService storageService;
 
     @Value("${aws.s3.bucket}")
     private String bucket;
 
-    @Mock
-    private AmazonS3 client=Mockito.mock(AmazonS3.class);
+//    @Mock
+//    private AmazonS3 client=Mockito.mock(AmazonS3.class);
 
     @Before
     public void setUp() throws Exception{
@@ -59,14 +60,20 @@ public class StorageServiceTest {
         assertEquals(expectedUrl,actualUrl);
     }
 
-    @Test
-    public void getObjectTest(){
-        String s3key="IMG_0385+2.JPG";
-        storageService.getObject(s3key);
-        verify(client,times(1)).getObject(bucket,s3key);
-        String s3keyV2=null;
-        storageService.getObject(s3keyV2);
-        verify(client,times(0)).getObject(bucket,s3keyV2);
+//    @Test
+//    public void getObjectTest(){
+//        String s3key="IMG_0385+2.JPG";
+//        storageService.getObject(s3key);
+//        verify(client,times(1)).getObject(bucket,s3key);
+//        String s3keyV2=null;
+//        storageService.getObject(s3keyV2);
+//        verify(client,times(0)).getObject(bucket,s3keyV2);
+//    }
 
+    @Test
+    public void getPreSignedUrlTest(){
+        String s3key="IMG_0383-02208211-a987-4f3c-9822-a3ad6bc3b99a.JPG";
+        URL actualPresignedUrl=storageService.getPreSignedUrl(s3key);
+        assertNotNull(actualPresignedUrl);
     }
 }
