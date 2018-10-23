@@ -1,5 +1,6 @@
 package com.uberrent.core.service;
 
+import com.uberrent.core.domain.Image;
 import com.uberrent.web.config.AppConfig;
 import com.uberrent.core.config.StorageMockConfigTest;
 import com.uberrent.core.service.ImageService;
@@ -28,9 +29,10 @@ public class ImageServiceTest {
         String s3key="IMG_0385+2.JPG";
         MultipartFile multipartFile=Mockito.mock(MultipartFile.class);
         when(multipartFile.getOriginalFilename()).thenReturn("test.png");
-        String expectedUrl=      "https://s3.us-east-1.amazonaws.com/rent-service-dev/test-.png";
-        String actualUrl=imageService.upload(multipartFile);
-        boolean a=actualUrl.matches("https://s3.us-east-1.amazonaws.com/rent-service-dev/test-(.*).png");
+        String expectedUrl=      "https://s3.us-east-2.amazonaws.com/rent-service-dev/test-.png";
+        Image actualUrl=imageService.upload(multipartFile);
+        String url=actualUrl.getUrl();
+        boolean a=url.matches("https://s3.us-east-2.amazonaws.com/rent-service-dev/test-(.*).png");
         assertTrue(String.valueOf(a),true);
     }
 }

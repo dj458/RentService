@@ -4,6 +4,9 @@ import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.S3Object;
+import com.uberrent.core.repository.ImageRepository;
+import com.uberrent.core.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import java.io.File;
 import java.net.URL;
@@ -43,7 +46,7 @@ public class StorageService {
     public URL getPreSignedUrl(String s3Key){
         java.util.Date expiration = new java.util.Date();
         long expTimeMillis = expiration.getTime();
-        expTimeMillis += 1000 * 60*60;
+        expTimeMillis += 1000 * 60;
         expiration.setTime(expTimeMillis);
         // Generate the pre-signed URL.
         System.out.println("Generating pre-signed URL.");
@@ -51,6 +54,7 @@ public class StorageService {
                 .withMethod(HttpMethod.GET)
                 .withExpiration(expiration);
         URL url = s3.generatePresignedUrl(generatePresignedUrlRequest);
+
         return url;
     }
 }

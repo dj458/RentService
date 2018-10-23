@@ -24,4 +24,6 @@ public class RepositoryTest {
     protected AuthorityRepository authorityRepository;
     @Autowired
     protected PaymentRepository paymentRepository;
+    @Autowired
+    protected ImageRepository imageRepository;
 }

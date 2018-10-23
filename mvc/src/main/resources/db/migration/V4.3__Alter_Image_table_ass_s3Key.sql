@@ -1,0 +1,1 @@
+ALTER TABLE images ADD COLUMN s3Key varchar(255);
