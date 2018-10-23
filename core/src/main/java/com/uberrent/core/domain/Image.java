@@ -27,6 +27,7 @@ public class Image {
 
     public Long getId(){ return id;}
 
+    @Transient
     public void setUrl (String url){this.url=url;}
     public String getUrl (){return url;}
 

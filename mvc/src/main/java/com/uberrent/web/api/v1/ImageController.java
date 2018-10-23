@@ -1,7 +1,6 @@
 package com.uberrent.web.api.v1;
 
 
-import com.amazonaws.services.s3.model.S3Object;
 import com.uberrent.core.domain.Image;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.repository.ImageRepository;
@@ -16,9 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.net.URL;
-import java.util.List;
 
 @RestController
 @RequestMapping(value="/api/images",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -60,7 +56,6 @@ public class ImageController {
             String url= imageService.getPreSignedUrl(preSignedS3Key).toString();
             image.setUrl(url);
         }
-
         return image;
     }
 }
