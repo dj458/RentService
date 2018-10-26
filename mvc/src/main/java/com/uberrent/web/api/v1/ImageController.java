@@ -3,6 +3,7 @@ package com.uberrent.web.api.v1;
 
 import com.uberrent.core.domain.Image;
 import com.uberrent.core.domain.User;
+import com.uberrent.core.enumdef.ObjectUrlFormat;
 import com.uberrent.core.repository.ImageRepository;
 import com.uberrent.core.service.ImageService;
 import com.uberrent.core.service.StorageService;
@@ -26,10 +27,8 @@ public class ImageController {
     private UserService userService;
     @Autowired
     private ImageRepository imageRepository;
-    @Autowired
-    private StorageService storageService;
 
-    @RequestMapping(value = "/upload",method = RequestMethod.POST)
+    @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public Image uploadImage(@RequestParam("pic") MultipartFile image){
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
@@ -42,17 +41,15 @@ public class ImageController {
         return imageUrl;
     }
 
-//TODO add example api to retrieve image
     @RequestMapping(value = "/{Id}",params = "format",method = RequestMethod.GET)
     @ResponseBody
-    public Image getImageURL(@RequestParam("format") Long format,@PathVariable("Id") Long Id){
+    public Image getImageURL(@RequestParam("format") ObjectUrlFormat format, @PathVariable("Id") Long Id){
         Image image=imageRepository.findByImageId(Id).get();
         String preSignedS3Key= image.getS3Key();
-        if (format==0) {
+        if (format==ObjectUrlFormat.REGULAR) {
             String url= imageService.getUrl(preSignedS3Key);
             image.setUrl(url);
-        }
-        else {
+        } else {
             String url= imageService.getPreSignedUrl(preSignedS3Key).toString();
             image.setUrl(url);
         }

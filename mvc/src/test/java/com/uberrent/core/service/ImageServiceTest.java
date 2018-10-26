@@ -33,6 +33,6 @@ public class ImageServiceTest {
         Image actualUrl=imageService.upload(multipartFile);
         String url=actualUrl.getUrl();
         boolean a=url.matches("https://s3.us-east-2.amazonaws.com/rent-service-dev/test-(.*).png");
-        assertTrue(String.valueOf(a),true);
+        assertTrue(a);
     }
 }
