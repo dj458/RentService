@@ -9,7 +9,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 
 @Configuration
-@ComponentScan(basePackages = "com.uberrent.web")
+@ComponentScan(basePackages = "com.uberrent.web",
+      excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,pattern = "com.uberrent.web.api.*"))
 @Import({ServiceConfig.class})
 public class AppConfig {
     @Autowired
@@ -30,4 +31,3 @@ public class AppConfig {
         return factory;
     }
 }
-

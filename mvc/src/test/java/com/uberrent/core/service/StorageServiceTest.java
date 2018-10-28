@@ -32,15 +32,15 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("unit")
 public class StorageServiceTest {
-//    @InjectMocks
+   @InjectMocks
     @Autowired
     private StorageService storageService;
 
     @Value("${aws.s3.bucket}")
     private String bucket;
 
-//    @Mock
-//    private AmazonS3 client=Mockito.mock(AmazonS3.class);
+    @Mock
+    private AmazonS3 client=Mockito.mock(AmazonS3.class);
 
     @Before
     public void setUp() throws Exception{
@@ -55,20 +55,10 @@ public class StorageServiceTest {
     @Test
     public void getObjectUrlTest(){
         String s3key="IMG_0385+2.JPG";
-        String expectedUrl="https://s3.us-east-1.amazonaws.com/rent-service-dev/"+s3key;
+        String expectedUrl="https://s3.us-east-2.amazonaws.com/rent-service-dev/"+s3key;
         String actualUrl=storageService.getObjectUrl(s3key);
         assertEquals(expectedUrl,actualUrl);
     }
-
-//    @Test
-//    public void getObjectTest(){
-//        String s3key="IMG_0385+2.JPG";
-//        storageService.getObject(s3key);
-//        verify(client,times(1)).getObject(bucket,s3key);
-//        String s3keyV2=null;
-//        storageService.getObject(s3keyV2);
-//        verify(client,times(0)).getObject(bucket,s3keyV2);
-//    }
 
     @Test
     public void getPreSignedUrlTest(){
