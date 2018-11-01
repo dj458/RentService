@@ -47,15 +47,13 @@ public class StorageService {
     public URL getPreSignedUrl(String s3Key){
         java.util.Date expiration = new java.util.Date();
         long expTimeMillis = expiration.getTime();
-        expTimeMillis += 1000 * preUrlexpiration;
+        expTimeMillis += 1000 * 60;
         expiration.setTime(expTimeMillis);
-        // Generate the pre-signed URL.
         System.out.println("Generating pre-signed URL.");
         GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucket, s3Key)
                 .withMethod(HttpMethod.GET)
                 .withExpiration(expiration);
         URL url = s3.generatePresignedUrl(generatePresignedUrlRequest);
-
         return url;
     }
 }

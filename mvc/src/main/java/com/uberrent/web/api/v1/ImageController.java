@@ -49,7 +49,7 @@ public class ImageController {
         if (format==ObjectUrlFormat.REGULAR) {
             String url= imageService.getUrl(preSignedS3Key);
             image.setUrl(url);
-        } else {
+        } else if(format==ObjectUrlFormat.PRESIGNED) {
             String url= imageService.getPreSignedUrl(preSignedS3Key).toString();
             image.setUrl(url);
         }

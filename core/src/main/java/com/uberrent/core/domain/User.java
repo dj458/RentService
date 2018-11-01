@@ -47,7 +47,7 @@ public class User implements UserDetails {
     @JsonIgnore
     private List<Equipment> equipments;
 
-//    @OneToMany(fetch = FetchType.LAZY,mappedBy ="user" )
+//  @OneToMany(fetch = FetchType.LAZY,mappedBy ="user" )
     @Transient
     @JsonIgnore
     private Collection<? extends GrantedAuthority> authorities;
@@ -66,7 +66,7 @@ public class User implements UserDetails {
     }
 
     public void  setAuthorities (Collection<? extends GrantedAuthority> authorities) {
-        this.authorities=authorities;
+         this.authorities=authorities;
     }
 
     @Override
