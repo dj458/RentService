@@ -79,6 +79,15 @@ public class UserController {
         return user;
     }
 
+    @RequestMapping(value = "/authority",method = RequestMethod.POST)
+    @ResponseBody
+    public User changeUserAuthority (String username){
+
+        User user = userService.findByUsername(username);
+        return user;
+
+    }
+
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
     public void sendEmailConfirmation(@PathVariable("id") Long id){
 
@@ -86,5 +95,7 @@ public class UserController {
 //       messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
 //       emailService.sendEmailConfirmation(user);
     }
+
+
 }
 

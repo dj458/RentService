@@ -21,6 +21,7 @@ public class JmsConfig {
     @Value("${aws.region}")
     private String region;
 
+    //which queue
     @Bean(name="connectionFactory")
     public SQSConnectionFactory getSQSConnectionFactory(){
         AmazonSQS amazonSQSClient = AmazonSQSClientBuilder.standard().withCredentials(new DefaultAWSCredentialsProviderChain()).withRegion(region).build();

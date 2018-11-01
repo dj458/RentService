@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.ResourceHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -77,4 +80,20 @@ public class MvcConfig  implements WebMvcConfigurer {
         resolver.setMaxUploadSize(10008439);
         return resolver;
     }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        MappingJackson2HttpMessageConverter jsonViewHttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        ResourceHttpMessageConverter resourceHttpMessageConverter = new ResourceHttpMessageConverter();
+        converters.add(jsonViewHttpMessageConverter);
+        converters.add(resourceHttpMessageConverter);
+    }
+
+//    @Override
+//    public void configureMessageConverters(List<HttpMessageConverter<?>> converters){
+//        MappingJackson2HttpMessageConverter jsonViewHttpMessageConverter = new MappingJackson2HttpMessageConverter();
+//        ResourceHttpMessageConverter resourceHttpMessageConverter = new ResourceHttpMessageConverter();
+//        converters.add(jsonViewHttpMessageConverter);
+//        converters.add(resourceHttpMessageConverter);
+//    }
 }
