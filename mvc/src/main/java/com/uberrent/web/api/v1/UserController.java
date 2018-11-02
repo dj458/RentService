@@ -85,7 +85,6 @@ public class UserController {
 
         User user = userService.findByUsername(username);
         return user;
-
     }
 
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
@@ -95,7 +94,5 @@ public class UserController {
 //       messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(id),5000);
 //       emailService.sendEmailConfirmation(user);
     }
-
-
 }
 
