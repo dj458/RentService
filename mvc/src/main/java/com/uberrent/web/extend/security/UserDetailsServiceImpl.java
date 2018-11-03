@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 import java.util.Locale;
 
 
-@Service
+@Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService, MessageSourceAware {
     @Autowired
     private UserService userService;

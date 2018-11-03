@@ -12,8 +12,6 @@ import java.io.IOException;
 
 @Configuration
 @ComponentScan(basePackages = "com.uberrent.core")
-
-
 public class ServiceConfig {
     @Value("${aws.s3.bucket}")
     private String bucket;
