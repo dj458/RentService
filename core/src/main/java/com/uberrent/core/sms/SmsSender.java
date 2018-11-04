@@ -23,7 +23,7 @@ public class SmsSender {
         Message message = Message
                 .creator(new PhoneNumber("+15404496270"), // to
                         new PhoneNumber("+15405180329"), // from
-                        "Where's Wallace?")
+                        "Your Identity verified")
                 .create();
 
         System.out.println(message.getSid());
