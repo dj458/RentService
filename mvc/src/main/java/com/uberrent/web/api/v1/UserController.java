@@ -1,5 +1,6 @@
 package com.uberrent.web.api.v1;
 
+import com.uberrent.core.domain.Authority;
 import com.uberrent.core.domain.LoginInfo;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.enumdef.WorkerMessageType;
@@ -81,9 +82,9 @@ public class UserController {
 
     @RequestMapping(value = "/authority",method = RequestMethod.POST)
     @ResponseBody
-    public User changeUserAuthority (String username){
-
-        User user = userService.findByUsername(username);
+    public User changeUserAuthority (@RequestParam("username") String username, @RequestParam ("role") String role){
+        User user =userService.findByUsername(username);
+        userService.changeAuthority(user,role);
         return user;
     }
 
