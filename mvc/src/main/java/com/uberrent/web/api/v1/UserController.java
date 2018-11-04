@@ -1,6 +1,5 @@
 package com.uberrent.web.api.v1;
 
-import com.uberrent.core.domain.Authority;
 import com.uberrent.core.domain.LoginInfo;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.enumdef.WorkerMessageType;
@@ -8,6 +7,7 @@ import com.uberrent.core.service.ImageService;
 import com.uberrent.core.service.StorageService;
 import com.uberrent.core.service.UserService;
 import com.uberrent.core.service.jms.MessageService;
+import com.uberrent.core.sms.SmsSender;
 import com.uberrent.web.extend.security.JwtTokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,12 +40,14 @@ public class UserController {
     private StorageService storageService;
     @Autowired
     private ImageService imageService;
-
+    @Autowired
+    private SmsSender smsSender;
 
     @RequestMapping(value = "/signup",method = RequestMethod.POST)
     public User signupUser(@RequestBody User user) {
              userService.registerUser(user);
              logger.info("save user "+ user.getUsername());
+             smsSender.sendSMS();//signup verification
              messageService.sendMessage(WorkerMessageType.UserSignUpMsg,String.valueOf(user.getId()),5000);
              return user;
     }
@@ -87,6 +89,7 @@ public class UserController {
         userService.changeAuthority(user,role);
         return user;
     }
+
 
     @RequestMapping(value = "/{id}/email",method = RequestMethod.POST)
     public void sendEmailConfirmation(@PathVariable("id") Long id){
