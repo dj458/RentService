@@ -329,6 +329,14 @@
             <artifactId>aws-java-sdk</artifactId>
             <version>1.11.366</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>7.17.0</version>
+        </dependency>
+
     </dependencies>
 
 

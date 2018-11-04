@@ -28,9 +28,9 @@ public class SwaggerConfig {
                 .title("RentService API")
                 .description("rent service api document")
                 .version("1.1")
-//                .termsOfServiceUrl("http://terms-of-services.url")
+                .termsOfServiceUrl("http://terms-of-services.url")
                 .license("LICENSE")
-//                .licenseUrl("http://url-to-license.com")
+                .licenseUrl("http://url-to-license.com")
                 .build();
     }
 }
