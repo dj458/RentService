@@ -1,9 +1,7 @@
 package com.uberrent.core.service;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.S3Object;
 import com.uberrent.web.config.AppConfig;
-import com.uberrent.core.service.StorageService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,13 +17,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.net.URL;
-
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyObject;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.validateMockitoUsage;
-import static org.mockito.Mockito.verify;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = {AppConfig.class})
@@ -62,8 +57,7 @@ public class StorageServiceTest {
 
     @Test
     public void getPreSignedUrlTest(){
-        String s3key="IMG_0383-02208211-a987-4f3c-9822-a3ad6bc3b99a.JPG";
-        URL actualPresignedUrl=storageService.getPreSignedUrl(s3key);
-        assertNotNull(actualPresignedUrl);
+        storageService.getPreSignedUrl("IMG_0383-02208211-a987-4f3c-9822-a3ad6bc3b99a.JPG");
+        Mockito.verify(client, times(1)).generatePresignedUrl(any());
     }
 }

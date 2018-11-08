@@ -4,13 +4,15 @@ import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.S3Object;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
 import java.net.URL;
 
 public class StorageService {
-
+    private Logger logger = LoggerFactory.getLogger(getClass());
     private AmazonS3 s3;
     private String bucket;
 
@@ -49,7 +51,7 @@ public class StorageService {
         long expTimeMillis = expiration.getTime();
         expTimeMillis += 1000 * 60;
         expiration.setTime(expTimeMillis);
-        System.out.println("Generating pre-signed URL.");
+        logger.info("Generating pre-signed URL.");
         GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucket, s3Key)
                 .withMethod(HttpMethod.GET)
                 .withExpiration(expiration);
