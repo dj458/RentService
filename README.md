@@ -42,3 +42,6 @@ mvn compile test -Dspring.profiles.active=${env} -P ${env}
 ```
 # Create war package file
 ``` mvn compile package -DoutputDirectory=./target -P dev```
+
+# Create Pre-signed URL blog
+https://blog.frugalops.com/quick-tutorial-to-integrate-amazon-s3-presigned-url/
