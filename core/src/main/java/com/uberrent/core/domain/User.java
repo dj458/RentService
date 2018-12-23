@@ -2,6 +2,7 @@ package com.uberrent.core.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,15 +21,19 @@ public class User implements UserDetails {
     @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq",allocationSize=1)
     private Long id;
     @Column(name = "password")
+    @JsonView({JsView.Anonymous.class})
     private String password;
 
     @Column(name = "email")
+    @JsonView({JsView.Admin.class})
     private String email;
 
     @Column(name = "username")
+    @JsonView({JsView.User.class})
     private String username;
 
     @Column(name = "first_name")
+    @JsonView({JsView.Other.class})
     private String firstName;
 
     @Column(name ="account_expired")

@@ -26,6 +26,8 @@ import static org.mockito.Mockito.validateMockitoUsage;
 @ContextConfiguration(classes = {AppConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("unit")
+
+//@TestExecutionListeners(listeners = {DependencyInjectionTestExecutionListener.class})
 public class StorageServiceTest {
    @InjectMocks
     @Autowired

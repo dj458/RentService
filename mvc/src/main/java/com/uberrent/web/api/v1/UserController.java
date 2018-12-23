@@ -1,5 +1,6 @@
 package com.uberrent.web.api.v1;
 
+import com.uberrent.core.domain.JsView;
 import com.uberrent.core.domain.LoginInfo;
 import com.uberrent.core.domain.User;
 import com.uberrent.core.enumdef.WorkerMessageType;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/api/users",produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserController {
+public class UserController extends BaseController{
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private UserService userService;
@@ -45,6 +46,8 @@ public class UserController {
 
     @RequestMapping(value = "/signup",method = RequestMethod.POST)
     public User signupUser(@RequestBody User user) {
+        setJsonViewClass (JsView.Admin.class);
+        disableMapperFeature_DEFAULT_VIEW_INCLUSION();
              userService.registerUser(user);
              logger.info("save user "+ user.getUsername());
              smsSender.sendSMS();//signup verification

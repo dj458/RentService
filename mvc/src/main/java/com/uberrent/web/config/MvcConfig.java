@@ -1,13 +1,13 @@
 package com.uberrent.web.config;
 
 import com.uberrent.web.config.viewresolver.JsonViewResolver;
+import com.uberrent.web.extend.exp.JsonViewHttpMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -15,8 +15,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Configuration
 @EnableWebMvc
@@ -83,7 +85,7 @@ public class MvcConfig  implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        MappingJackson2HttpMessageConverter jsonViewHttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        JsonViewHttpMessageConverter jsonViewHttpMessageConverter = new JsonViewHttpMessageConverter();
         ResourceHttpMessageConverter resourceHttpMessageConverter = new ResourceHttpMessageConverter();
         converters.add(jsonViewHttpMessageConverter);
         converters.add(resourceHttpMessageConverter);
